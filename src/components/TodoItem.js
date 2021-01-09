@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function TodoItem() {
+export default function TodoItem({ text, done }) {
     return (
-        <div>
-            TodoItem
-        </div>
+        done ? 
+            <div>{text}</div> 
+            : 
+            <div style={{ textDecoration: 'line-through'}}>{text}</div>
     )
 }
