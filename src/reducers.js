@@ -3,27 +3,33 @@ import {
     REMOVE_TODO_ITEM,
     EDIT_TODO_ITEM,
 
-    MARK_TODO_ITEM_DONE,
-    MARK_TODO_ITEM_UNDONE,
+    TOGGLE_ITEM,
 
     FILTER_ALL,
     FILTER_DONE,
-    FILTER_UNDONE
+    FILTER_UNDONE,
+
+    INPUT_CHANGE
 } from './constants';
 
 
 const initialStateTodoList = {
+    inputText: '',
     todoItems: []
 }
 
 export const editTodoList = (state = initialStateTodoList, action = {}) => {
+
     switch (action.type) {
         case ADD_TODO_ITEM:
-            return { ...state, todoItems: [...state.todoItems, action.payload] }
+            return state.inputText !== ''
+                ?
+                { ...state, todoItems: [...state.todoItems, { text: state.inputText, done: false }], inputText: '' }
+                : state
         case REMOVE_TODO_ITEM:
             return {
                 ...state, todoItems: state.todoItems.filter((el, index) => {
-                    return index !== action.payload.index
+                    return index !== action.payload
                 })
             }
         case EDIT_TODO_ITEM:
@@ -35,26 +41,20 @@ export const editTodoList = (state = initialStateTodoList, action = {}) => {
                     return el
                 })
             }
+        case INPUT_CHANGE:
+            return { ...state, inputText: action.payload }
+        case TOGGLE_ITEM:
+            return {
+                ...state, todoItems: state.todoItems.map((el, index) => {
+                    if (index === action.payload) {
+                        el.done = !el.done
+                    }
+                    return el
+                })
+            }
         default:
             return state;
     }
-}
-
-const initialStateTodoItem = {
-    text: '',
-    done: false
-}
-
-export const editTodoItem = (state = initialStateTodoItem, action = {}) => {
-    switch (action.type) {
-        case MARK_TODO_ITEM_DONE:
-            return { ...state, done: true }
-        case MARK_TODO_ITEM_UNDONE:
-            return { ...state, done: false }
-        default:
-            return state
-    }
-
 }
 
 const initialStateFilter = {
