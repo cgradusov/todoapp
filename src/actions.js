@@ -3,36 +3,33 @@ import {
     REMOVE_TODO_ITEM,
     EDIT_TODO_ITEM,
 
-    MARK_TODO_ITEM_DONE,
-    MARK_TODO_ITEM_UNDONE,
+    TOGGLE_ITEM,
 
     FILTER_ALL,
     FILTER_DONE,
-    FILTER_UNDONE
+    FILTER_UNDONE,
+
+    INPUT_CHANGE
 } from './constants';
 
 
-export const addTodoItem = (text) => ({
-    type: ADD_TODO_ITEM,
-    payload: text
+export const addTodoItem = () => ({
+    type: ADD_TODO_ITEM
 })
 
-export const removeTodoItem = () => ({
+export const removeTodoItem = (index) => ({
     type: REMOVE_TODO_ITEM,
+    payload: index
 })
 
-export const editTodoItem = (text) => ({
-    type: EDIT_TODO_ITEM,
-    payload: text
+export const editTodoItem = () => ({
+    type: EDIT_TODO_ITEM
 })
 
 
-export const markTodoItemDone = () => ({
-    type: MARK_TODO_ITEM_DONE,
-})
-
-export const markTodoItemUndone = () => ({
-    type: MARK_TODO_ITEM_UNDONE,
+export const toggleItem = (index) => ({
+    type: TOGGLE_ITEM,
+    payload: index
 })
 
 
@@ -47,3 +44,10 @@ export const filterTodoItemsDone = () => ({
 export const filterTodoItemsUndone = () => ({
     type: FILTER_UNDONE,
 })
+
+export const changeInput = (text) => {
+    return {
+        type: INPUT_CHANGE,
+        payload: text
+    }
+}
