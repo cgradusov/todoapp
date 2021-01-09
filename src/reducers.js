@@ -45,6 +45,18 @@ const initialStateTodoItem = {
     done: false
 }
 
+export const editTodoItem = (state = initialStateTodoItem, action = {}) => {
+    switch (action.type) {
+        case MARK_TODO_ITEM_DONE:
+            return { ...state, done: true }
+        case MARK_TODO_ITEM_UNDONE:
+            return { ...state, done: false }
+        default:
+            return state
+    }
+
+}
+
 const initialStateFilter = {
     filter: FILTER_ALL
 };
