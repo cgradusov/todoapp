@@ -61,7 +61,7 @@ const initialStateFilter = {
     filter: FILTER_ALL
 };
 
-export const changeFilter = (state = initialStateFilter, action = {}) {
+export const changeFilter = (state = initialStateFilter, action = {}) => {
     switch (action.type) {
         case FILTER_ALL:
             return { ...state, filter: FILTER_ALL}
