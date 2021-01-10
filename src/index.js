@@ -8,8 +8,9 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { editTodoList } from './containers/App/reducers';
 import { changeFilter } from './containers/Filter/reducers';
+import { changeInput } from './containers/TodoInput/reducers';
 
-const rootReducer = combineReducers({ editTodoList, changeFilter} );
+const rootReducer = combineReducers({ editTodoList, changeFilter, changeInput } );
 const store = createStore(rootReducer);
 
 ReactDOM.render(

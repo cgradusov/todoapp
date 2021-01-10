@@ -3,12 +3,10 @@ import {
     REMOVE_TODO_ITEM,
     EDIT_TODO_ITEM,
     TOGGLE_ITEM,
-    INPUT_CHANGE
 } from './constants';
 
 
 const initialStateTodoList = {
-    inputText: '',
     todoItems: []
 }
 
@@ -16,9 +14,9 @@ export const editTodoList = (state = initialStateTodoList, action = {}) => {
 
     switch (action.type) {
         case ADD_TODO_ITEM:
-            return state.inputText !== ''
+            return action.payload !== ''
                 ?
-                { ...state, todoItems: [...state.todoItems, { text: state.inputText, done: false }], inputText: '' }
+                { ...state, todoItems: [...state.todoItems, { text: action.payload, done: false }] }
                 : state
         case REMOVE_TODO_ITEM:
             return {
@@ -35,8 +33,6 @@ export const editTodoList = (state = initialStateTodoList, action = {}) => {
                     return el
                 })
             }
-        case INPUT_CHANGE:
-            return { ...state, inputText: action.payload }
         case TOGGLE_ITEM:
             return {
                 ...state, todoItems: state.todoItems.map((el, index) => {

@@ -1,31 +1,30 @@
 import './App.css';
 import TodoList from '../../components/TodoList/TodoList';
 import Filter from '../Filter/Filter'
+import TodoInput from "../TodoInput/TodoInput";
 import { connect } from 'react-redux';
-import { 
-  changeInput, 
+import {
   addTodoItem, 
   removeTodoItem, 
   toggleItem,
 } from "./actions";
 
 function App(props) {
-  const { 
-    onInputChange, 
+  const {
     onAdd, 
-    inputText, 
     todoItems, 
     onRemove,
     onToggle,
     filter,
+    inputText
   } = props;
 
   return (
     <div>
       <Filter />
       <br />
-      <input type="text" onChange={ onInputChange } value={ inputText } onKeyUp={ (e) => e.key === 'Enter' ? onAdd() : null }/>
-      <button onClick={ onAdd }>Add</button>
+      <TodoInput onAdd={ () => onAdd(inputText) } />
+      <button onClick={ () => onAdd(inputText) }>Add</button>
       <TodoList todoItems={todoItems} onRemove={onRemove} onToggle={onToggle} filter={filter} />
     </div>
   );
@@ -34,17 +33,16 @@ function App(props) {
 const mapStateToProps = state => {
   return {
     todoItems: state.editTodoList.todoItems,
-    inputText: state.editTodoList.inputText,
+    inputText: state.changeInput.inputText,
     filter: state.changeFilter.filter,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInputChange: e => dispatch(changeInput(e.target.value)),
-    onAdd: () => dispatch(addTodoItem()),
+    onAdd: (inputText) => dispatch(addTodoItem(inputText)),
     onRemove: (index) => dispatch(removeTodoItem(index)),
-    onToggle: (index) => dispatch(toggleItem(index))
+    onToggle: (index) => dispatch(toggleItem(index)),
   }
 }
 
