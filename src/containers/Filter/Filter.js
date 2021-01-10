@@ -5,15 +5,20 @@ import {
     filterTodoItemsDone,
     filterTodoItemsUndone
 } from './actions';
+import { FILTER_ALL, FILTER_DONE, FILTER_UNDONE } from "./constants";
 
 function Filter(props) {
-    const { showAllTodo, showDoneTodo, showUndoneTodo } = props;
+    const { showAllTodo, showDoneTodo, showUndoneTodo, filter } = props;
+
+    const isBold = (buttonFilter) => ({
+        fontWeight: buttonFilter === filter ? 'bold' : 'normal' 
+    })
 
     return (
         <div>
-            <button onClick={showAllTodo}>All</button>
-            <button onClick={showDoneTodo}>Done</button>
-            <button onClick={showUndoneTodo}>Undone</button>
+            <button style={isBold(FILTER_ALL)} onClick={showAllTodo}>All</button>
+            <button style={isBold(FILTER_DONE)} onClick={showDoneTodo}>Done</button>
+            <button style={isBold(FILTER_UNDONE)} onClick={showUndoneTodo}>Undone</button>
         </div>
     )
 }
