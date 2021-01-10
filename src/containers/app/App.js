@@ -1,5 +1,5 @@
 import './App.css';
-import TodoList from '../../components/TodoList';
+import TodoList from '../../components/TodoList/TodoList';
 import { connect } from 'react-redux';
 import { 
   changeInput, 
