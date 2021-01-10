@@ -1,14 +1,12 @@
 import './App.css';
 import TodoList from '../../components/TodoList/TodoList';
+import Filter from '../Filter/Filter'
 import { connect } from 'react-redux';
 import { 
   changeInput, 
   addTodoItem, 
   removeTodoItem, 
-  toggleItem, 
-  filterTodoItemsAll, 
-  filterTodoItemsDone, 
-  filterTodoItemsUndone 
+  toggleItem,
 } from "../../actions";
 
 function App(props) {
@@ -20,17 +18,11 @@ function App(props) {
     onRemove,
     onToggle,
     filter,
-    showAllTodo,
-    showDoneTodo,
-    showUndoneTodo
   } = props;
 
   return (
     <div>
-
-      <button onClick={showAllTodo}>All</button>
-      <button onClick={showDoneTodo}>Done</button>
-      <button onClick={showUndoneTodo}>Undone</button>
+      <Filter />
       <br />
       <input type="text" onChange={ onInputChange } value={ inputText } onKeyUp={ (e) => e.key === 'Enter' ? onAdd() : null }/>
       <button onClick={ onAdd }>Add</button>
@@ -52,10 +44,7 @@ const mapDispatchToProps = dispatch => {
     onInputChange: e => dispatch(changeInput(e.target.value)),
     onAdd: () => dispatch(addTodoItem()),
     onRemove: (index) => dispatch(removeTodoItem(index)),
-    onToggle: (index) => dispatch(toggleItem(index)),
-    showAllTodo: () => dispatch(filterTodoItemsAll()),
-    showDoneTodo: () => dispatch(filterTodoItemsDone()),
-    showUndoneTodo: () => dispatch(filterTodoItemsUndone())
+    onToggle: (index) => dispatch(toggleItem(index))
   }
 }
 
