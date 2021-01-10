@@ -7,7 +7,7 @@ import {
   addTodoItem, 
   removeTodoItem, 
   toggleItem,
-} from "../../actions";
+} from "./actions";
 
 function App(props) {
   const { 
