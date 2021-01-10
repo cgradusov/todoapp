@@ -1,6 +1,6 @@
 import React from 'react'
 import TodoItem from '../TodoItem/TodoItem';
-import { FILTER_ALL, FILTER_DONE, FILTER_UNDONE } from "../../constants";
+import { FILTER_ALL, FILTER_DONE, FILTER_UNDONE } from '../../containers/Filter/constants';
 
 export default function TodoList(props) {
     const { todoItems, onRemove, onToggle, filter } = props;

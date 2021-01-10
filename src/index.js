@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import { editTodoList, changeFilter } from "./reducers";
+import { editTodoList } from './reducers';
+import { changeFilter } from './containers/Filter/reducers';
 
 const rootReducer = combineReducers({ editTodoList, changeFilter} );
 const store = createStore(rootReducer);

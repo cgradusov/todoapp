@@ -2,13 +2,7 @@ import {
     ADD_TODO_ITEM,
     REMOVE_TODO_ITEM,
     EDIT_TODO_ITEM,
-
     TOGGLE_ITEM,
-
-    FILTER_ALL,
-    FILTER_DONE,
-    FILTER_UNDONE,
-
     INPUT_CHANGE
 } from './constants';
 
@@ -54,22 +48,5 @@ export const editTodoList = (state = initialStateTodoList, action = {}) => {
             }
         default:
             return state;
-    }
-}
-
-const initialStateFilter = {
-    filter: FILTER_ALL
-};
-
-export const changeFilter = (state = initialStateFilter, action = {}) => {
-    switch (action.type) {
-        case FILTER_ALL:
-            return { ...state, filter: FILTER_ALL}
-        case FILTER_DONE:
-            return { ...state, filter: FILTER_DONE }
-        case FILTER_UNDONE:
-            return { ...state, filter: FILTER_UNDONE }
-        default:
-            return state       
     }
 }

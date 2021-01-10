@@ -4,7 +4,7 @@ import {
     filterTodoItemsAll,
     filterTodoItemsDone,
     filterTodoItemsUndone
-} from "../../actions";
+} from './actions';
 
 function Filter(props) {
     const { showAllTodo, showDoneTodo, showUndoneTodo } = props;
