@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 export default function TodoItem({ text, done, index, onToggle, onRemove }) {
     const pStyle = {
         textDecoration: done ? 'line-through' : 'none',
+        overflowWrap: 'break-word'
     }
 
     const labelId = `checkbox-list-label-${index}`;
