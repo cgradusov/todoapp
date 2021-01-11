@@ -1,11 +1,12 @@
 import React from 'react'
 import TodoItem from '../TodoItem/TodoItem';
 import { FILTER_ALL, FILTER_DONE, FILTER_UNDONE } from '../../containers/Filter/constants';
+import { List } from '@material-ui/core';
 
 export default function TodoList(props) {
     const { todoItems, onRemove, onToggle, filter } = props;
     return (
-        <ul>
+        <List>
             {todoItems
                 .filter((el) => {
                     switch (filter) {
@@ -23,7 +24,7 @@ export default function TodoList(props) {
                     <TodoItem text={el.text} done={el.done} onRemove={() => onRemove(index)} onToggle={() => onToggle(index)} index={index} key={index} />
                 ))
             }
-        </ul>
+        </List>
     )
 }
 
