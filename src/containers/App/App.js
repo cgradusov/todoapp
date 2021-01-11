@@ -8,7 +8,7 @@ import {
   removeTodoItem, 
   toggleItem,
 } from "./actions";
-import { Button } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 
 function App(props) {
   const {
@@ -21,13 +21,27 @@ function App(props) {
   } = props;
 
   return (
-    <div>
-      <Filter />
-      <br />
-      <TodoInput onAdd={ () => onAdd(inputText) } />
-      <Button onClick={ () => onAdd(inputText) }>Add</Button>
-      <TodoList todoItems={todoItems} onRemove={onRemove} onToggle={onToggle} filter={filter} />
-    </div>
+    <Grid container spacing={3}>
+      <Grid container item xs={12} justify="center">
+        <Typography variant="h2" component="h1">
+          Todo App
+        </Typography>
+      </Grid>
+      <Grid container item xs={12} justify="center">
+        <Filter />
+      </Grid>
+      <Grid container item direction="row" xs={12} justify="center" spacing={1}>
+        <Grid container item xs={5}>
+          <TodoInput onAdd={() => onAdd(inputText)} />
+        </Grid>
+        <Button onClick={() => onAdd(inputText)}>Add</Button>
+      </Grid>
+      <Grid container xs={12} justify="center">
+        <Grid item xs={6}>
+          <TodoList todoItems={todoItems} onRemove={onRemove} onToggle={onToggle} filter={filter} />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 

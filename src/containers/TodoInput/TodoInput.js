@@ -6,7 +6,7 @@ import { TextField } from '@material-ui/core';
 function TodoInput(props) {
     const { onInputChange, inputText, onAdd } = props;
 
-    return <TextField onChange={onInputChange} value={inputText} onKeyUp={(e) => e.key === 'Enter' ? onAdd() : null} />
+    return <TextField fullWidth onChange={onInputChange} value={inputText} onKeyUp={(e) => e.key === 'Enter' ? onAdd() : null} />
 }
 
 const mapStateToProps = state => ({
