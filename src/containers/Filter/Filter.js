@@ -6,6 +6,7 @@ import {
     filterTodoItemsUndone
 } from './actions';
 import { FILTER_ALL, FILTER_DONE, FILTER_UNDONE } from "./constants";
+import { Button } from '@material-ui/core';
 
 function Filter(props) {
     const { showAllTodo, showDoneTodo, showUndoneTodo, filter } = props;
@@ -15,10 +16,10 @@ function Filter(props) {
     })
 
     return (
-        <div>
-            <button style={isBold(FILTER_ALL)} onClick={showAllTodo}>All</button>
-            <button style={isBold(FILTER_DONE)} onClick={showDoneTodo}>Done</button>
-            <button style={isBold(FILTER_UNDONE)} onClick={showUndoneTodo}>Undone</button>
+        <div style={{ display: 'flex', gap: '10px' }}>
+            <Button variant="contained" color="primary" style={isBold(FILTER_ALL)} onClick={showAllTodo}>All</Button>
+            <Button variant="contained" color="primary" style={isBold(FILTER_DONE)} onClick={showDoneTodo}>Done</Button>
+            <Button variant="contained" color="primary" style={isBold(FILTER_UNDONE)} onClick={showUndoneTodo}>Undone</Button>
         </div>
     )
 }
