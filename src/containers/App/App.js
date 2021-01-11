@@ -8,6 +8,7 @@ import {
   removeTodoItem, 
   toggleItem,
 } from "./actions";
+import { Button } from '@material-ui/core';
 
 function App(props) {
   const {
@@ -24,7 +25,7 @@ function App(props) {
       <Filter />
       <br />
       <TodoInput onAdd={ () => onAdd(inputText) } />
-      <button onClick={ () => onAdd(inputText) }>Add</button>
+      <Button onClick={ () => onAdd(inputText) }>Add</Button>
       <TodoList todoItems={todoItems} onRemove={onRemove} onToggle={onToggle} filter={filter} />
     </div>
   );
