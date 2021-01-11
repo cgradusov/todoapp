@@ -10,23 +10,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default function TodoItem({ text, done, index, onToggle, onRemove }) {
-    const [checked, setChecked] = React.useState(false);
-
     const pStyle = {
         textDecoration: done ? 'line-through' : 'none',
     }
 
     const labelId = `checkbox-list-label-${index}`;
-    const onClick = () => {
-        onToggle()
-        setChecked(!checked)
-    }
 
     return (
-        <ListItem key={index} dense button onClick={onClick}>
+        <ListItem key={index} dense button onClick={onToggle}>
             <ListItemIcon>
                 <Checkbox
-                    checked={checked}
+                    checked={done}
                     edge="start"
                     disableRipple
                     inputProps={{ 'aria-labelledby': labelId }}
