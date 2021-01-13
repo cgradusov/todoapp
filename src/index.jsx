@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
 import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 
-import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import { editTodoList } from './containers/App/reducers';
-import { changeFilter } from './containers/Filter/reducers';
-import { changeInput } from './containers/TodoInput/reducers';
+import editTodoList from './containers/App/reducers';
+import changeFilter from './containers/Filter/reducers';
+import changeInput from './containers/TodoInput/reducers';
 
-const rootReducer = combineReducers({ editTodoList, changeFilter, changeInput } );
+const rootReducer = combineReducers({ editTodoList, changeFilter, changeInput });
 const store = createStore(rootReducer);
 
 ReactDOM.render(
@@ -19,7 +19,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

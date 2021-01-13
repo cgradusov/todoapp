@@ -1,10 +1,8 @@
-import {
-    INPUT_CHANGE
-} from './constants';
+import INPUT_CHANGE from './constants';
 
-export const changeInput = (text) => {
-    return {
-        type: INPUT_CHANGE,
-        payload: text
-    }
-}
+const changeInput = (text) => ({
+  type: INPUT_CHANGE,
+  payload: text,
+});
+
+export default changeInput;

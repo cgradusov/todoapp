@@ -1,23 +1,25 @@
+/* eslint-disable react/prop-types */
 import './App.css';
-import TodoList from '../../components/TodoList/TodoList';
-import Filter from '../Filter/Filter'
-import TodoInput from "../TodoInput/TodoInput";
+import { React } from 'react';
 import { connect } from 'react-redux';
-import {
-  addTodoItem, 
-  removeTodoItem, 
-  toggleItem,
-} from "./actions";
 import { Button, Grid, Typography } from '@material-ui/core';
+import TodoList from '../../components/TodoList/TodoList';
+import Filter from '../Filter/Filter';
+import TodoInput from '../TodoInput/TodoInput';
+import {
+  addTodoItem,
+  removeTodoItem,
+  toggleItem,
+} from './actions';
 
 function App(props) {
   const {
-    onAdd, 
-    todoItems, 
+    onAdd,
+    todoItems,
     onRemove,
     onToggle,
     filter,
-    inputText
+    inputText,
   } = props;
 
   return (
@@ -45,20 +47,16 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    todoItems: state.editTodoList.todoItems,
-    inputText: state.changeInput.inputText,
-    filter: state.changeFilter.filter,
-  }
-}
+const mapStateToProps = (state) => ({
+  todoItems: state.editTodoList.todoItems,
+  inputText: state.changeInput.inputText,
+  filter: state.changeFilter.filter,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAdd: (inputText) => dispatch(addTodoItem(inputText)),
-    onRemove: (index) => dispatch(removeTodoItem(index)),
-    onToggle: (index) => dispatch(toggleItem(index)),
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  onAdd: (inputText) => dispatch(addTodoItem(inputText)),
+  onRemove: (index) => dispatch(removeTodoItem(index)),
+  onToggle: (index) => dispatch(toggleItem(index)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
