@@ -23,7 +23,7 @@ function App(props) {
   } = props;
 
   return (
-    <Grid container spacing={3}>
+    <Grid container style={{ gap: '20px' }}>
       <Grid container item xs={12} justify="center">
         <Typography variant="h2" component="h1">
           Todo App
