@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import {
   ADD_TODO_ITEM,
   REMOVE_TODO_ITEM,
@@ -13,7 +15,11 @@ const editTodoList = (state = initialStateTodoList, action = {}) => {
   switch (action.type) {
     case ADD_TODO_ITEM:
       return action.payload !== ''
-        ? { ...state, todoItems: [...state.todoItems, { text: action.payload, done: false }] }
+        ? {
+          ...state,
+          todoItems: [...state.todoItems,
+            { id: uuidv4(), text: action.payload, done: false }],
+        }
         : state;
     case REMOVE_TODO_ITEM:
       return {

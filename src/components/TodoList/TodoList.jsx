@@ -25,13 +25,13 @@ export default function TodoList(props) {
         })
         .map((el, index) => (
           <TodoItem
+            id={el.id}
             text={el.text}
             done={el.done}
             onRemove={() => onRemove(index)}
             onToggle={() => onToggle(index)}
             index={index}
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={el.id}
           />
         ))}
     </List>

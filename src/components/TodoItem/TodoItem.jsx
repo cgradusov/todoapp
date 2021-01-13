@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default function TodoItem({
-  text, done, index, onToggle, onRemove,
+  id, text, done, index, onToggle, onRemove,
 }) {
   const pStyle = {
     textDecoration: done ? 'line-through' : 'none',
@@ -21,7 +21,7 @@ export default function TodoItem({
   const labelId = `checkbox-list-label-${index}`;
 
   return (
-    <ListItem key={index} dense button onClick={onToggle}>
+    <ListItem key={id} dense button onClick={onToggle}>
       <ListItemIcon>
         <Checkbox
           checked={done}
