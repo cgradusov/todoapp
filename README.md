@@ -1,6 +1,8 @@
 # TodoApp  
 
 TodoApp is a React application created for frontend skill demonstration.   
+  
+![Project Image](https://raw.githubusercontent.com/cgradusov/todoapp/main/docs/todoapp.png)
 
 ## Instalation  
 Use the package manager to install dependencies.  
